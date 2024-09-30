@@ -1,17 +1,17 @@
-=== Wallet System for WooCommerce – Wallet, Secure Transactions, Cashback, Refunds, Partial Payment, Wallet Restriction, Offer Rewards ===
+=== Wallet System for WooCommerce – Wallet, Secure Online Payments, Cashback, Refunds, Partial Payment, Wallet Restriction, WooCommerce Payment  ===
 Contributors: wpswings
 Donate link: https://wpswings.com/
 Tags:  wallet, cashback, partial payment, refunds, woocommerce wallet
 Requires at least: 5.5.0
-Tested up to: 6.6.1
+Tested up to: 6.6.2
 WC Requires at least: 6.5.2
-WC tested up to: 9.2.3
-Stable tag: 2.5.16
+WC tested up to: 9.3.3
+Stable tag: 2.5.17
 Requires PHP: 7.2.24
 License: GPLv3 or later 
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-An advanced wallet system that offers effortless payments with features like auto top-up, wallet restrictions, manage refunds and cashback offers.
+An WooCommerce wallet system that offers effortless payments with features like auto top-up, wallet restrictions, manage refunds and cashback offers.
 
 == Description ==
 
@@ -183,7 +183,7 @@ We provide integration with popular local payment gateways. But if you want inte
 = Can we recharge the wallet from the front end or without an admin dashboard? =
 Yes, we can recharge the wallet from the front end for this, please go to the *my-account page >> wallet >> add balance*.
 
-= Can we refund the order on the digital wallet plugin? =
+= Can we refund the order on this ecommerce wallet plugin? =
 Yes, the admin can refund the order on the plugin wallet. For this we have provided a setting name as a refund to the wallet, please enable this setting from the general tab.
 
 = Can the admin update the wallet amount of all the users at once? =
@@ -244,6 +244,10 @@ For more detail please visit [**WP Swings Wallet Knowledge base**](https://suppo
 
 
 == Changelog ==
+
+= 2.5.17 – Released on 30 September 2024 =
+* New: Add wallet payment method and remove wallet partial payment method for subscription purchase. 
+* New: Compatible with latest WP [ 6.6.2 ] and WC [ 9.3.3 ].
 
 = 2.5.16 – Released on 27 August 2024 =
 * New: Show cashback amount to user on wallet tab.
@@ -474,6 +478,6 @@ For more detail please visit [**WP Swings Wallet Knowledge base**](https://suppo
 
 == Upgrade Notice ==
 
-= 2.5.16 – Released on 27 August 2024 =
-* New: Show cashback amount to user on wallet tab.
-* New: Latest WP [6.6.1] and WC [9.2.3].
+= 2.5.17 – Released on 30 September 2024 =
+* New: Add wallet payment method and remove wallet partial payment method for subscription purchase. 
+* New: Compatible with latest WP [ 6.6.2 ] and WC [ 9.3.3 ].
