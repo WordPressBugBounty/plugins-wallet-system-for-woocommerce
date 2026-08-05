@@ -81,7 +81,7 @@ class Wallet_System_For_Woocommerce {
 			$this->version = WALLET_SYSTEM_FOR_WOOCOMMERCE_VERSION;
 		} else {
 
-			$this->version = '2.7.8';
+			$this->version = '2.7.9';
 		}
 
 		$this->plugin_name = 'wallet-system-for-woocommerce';
@@ -274,13 +274,6 @@ class Wallet_System_For_Woocommerce {
 		$this->loader->add_action( 'wp_ajax_wps_wallet_delete_user_tranasactions', $wsfw_plugin_admin, 'wps_wallet_delete_user_tranasactions' );
 
 		$this->loader->add_action( 'woocommerce_after_order_fee_item_name', $wsfw_plugin_admin, 'woocommerce_after_order_fee_item_name_callback', 10, 2 );
-		// Adding Upsell Orders column in Orders table in backend.
-		$this->loader->add_filter( 'manage_edit-shop_order_columns', $wsfw_plugin_admin, 'wps_wsfw_wallet_add_columns_to_admin_orders', 11 );
-		// Populating Upsell Orders column with Single Order or Upsell order.
-		$this->loader->add_action( 'manage_shop_order_posts_custom_column', $wsfw_plugin_admin, 'wps_wocuf_pro_populate_wallet_order_column', 10, 2 );
-
-		$this->loader->add_action( 'woocommerce_shop_order_list_table_custom_column', $wsfw_plugin_admin, 'wps_wocuf_pro_populate_wallet_order_column', 10, 2 );
-		$this->loader->add_filter( 'woocommerce_shop_order_list_table_columns', $wsfw_plugin_admin, 'wps_wsfw_wallet_add_columns_to_admin_orders', 99 );
 		$this->loader->add_action( 'wp_ajax_wps_wsfw_filter_chart_data', $wsfw_plugin_admin, 'wps_wsfw_filter_chart_data' );
 		// Chart data contains user wallet details; never expose to guests.
 
@@ -294,25 +287,6 @@ class Wallet_System_For_Woocommerce {
 			}
 		}
 
-		$is_pro = false;
-		$is_pro = apply_filters( 'wsfw_check_pro_plugin', $is_pro );
-		if ( ! $is_pro ) {
-			$this->loader->add_filter( 'wsfwp_wallet_action_settings_withdrawal_array', $wsfw_plugin_admin, 'wps_wsfws_admin_wallet_action_withdrawal_settings_page_org', 10 );
-			$this->loader->add_filter( 'wsfwp_wallet_action_settings_transfer_array', $wsfw_plugin_admin, 'wps_wsfws_admin_wallet_action_transfer_settings_page_org', 10 );
-			$this->loader->add_action( 'wsfw_wallet_action_settings_refer_friend_array', $wsfw_plugin_admin, 'wsfw_admin_wallet_action_settings_refer_friend_array_org', 10 );
-			$this->loader->add_action( 'wsfw_wallet_action_different_layout_settings_array', $wsfw_plugin_admin, 'wsfw_admin_wallet_different_layout_settings_array_org', 10 );
-			$this->loader->add_action( 'wsfw_wallet_action_payment_settings_array', $wsfw_plugin_admin, 'wsfw_wallet_action_payment_settings_array_org', 10 );
-			$this->loader->add_action( 'wsfw_wallet_action_low_balance_settings_array', $wsfw_plugin_admin, 'wsfw_wallet_action_low_balance_settings_array_org', 10 );
-			$this->loader->add_action( 'wsfw_wallet_action_gamification_rule_settings_array', $wsfw_plugin_admin, 'wsfw_admin_wallet_gamification_rule_settings_array_org', 10 );
-			$this->loader->add_filter( 'wsfw_wallet_restriction_withdrawal_array_org', $wsfw_plugin_admin, 'wps_wsfw_admin_wallet_withdrawal_restriction_settings_page_org', 10 );
-			$this->loader->add_filter( 'wsfw_wallet_restriction_transfer_array_org', $wsfw_plugin_admin, 'wps_wsfw_admin_wallet_transfer_restriction_settings_page_org', 10 );
-			$this->loader->add_filter( 'wsfw_wallet_restriction_recharge_array_org', $wsfw_plugin_admin, 'wps_wsfw_admin_wallet_recharge_restriction_settings_page_org', 10 );
-			$this->loader->add_action( 'wsfw_wallet_action_recharge_enable_settings_org', $wsfw_plugin_admin, 'wsfw_wallet_action_recharge_enable_settings_tab_org', 10 );
-			$this->loader->add_action( 'wsfw_wallet_action_promotions_enable_settings_org', $wsfw_plugin_admin, 'wsfw_wallet_action_promotion_enable_settings_tab_org', 10 );
-			$this->loader->add_filter( 'wsfw_wallet_action_withdrawal_settings', $wsfw_plugin_admin, 'wsfw_wallet_withdrawal_enable_settings_tab', 10 );
-			$this->loader->add_filter( 'wsfw_wallet_action_sms_notification_settings', $wsfw_plugin_admin, 'wsfw_wallet_sms_notification_settings_tab', 10 );
-
-		}
 		$this->loader->add_filter( 'wsfw_wallet_bnpl_notification_settings', $wsfw_plugin_admin, 'wsfw_wallet_bnpl_notification_settings_tab', 10 );
 		$this->loader->add_filter( 'wsfw_wallet_kyc_notification_settings', $wsfw_plugin_admin, 'wsfw_wallet_kyc_notification_settings_tab', 10 );
 		$this->loader->add_action( 'woocommerce_new_order', $wsfw_plugin_admin, 'wps_wsfw_wallet_payment_on_order_create' );
@@ -574,32 +548,6 @@ class Wallet_System_For_Woocommerce {
 			'title' => esc_html__( 'Wallet Actions', 'wallet-system-for-woocommerce' ),
 			'name'  => 'wallet-system-for-woocommerce-wallet-actions',
 		);
-		$is_pro = false;
-		$is_pro = apply_filters( 'wsfw_check_pro_plugin', $is_pro );
-
-		if ( ! $is_pro ) {
-			$wsfw_default_tabs['wallet-system-for-woocommerce-org-wallet-withdrawal-settings'] = array(
-				'title'     => esc_html__( 'Withdrawal Settings', 'wallet-system-for-woocommerce' ),
-				'name'      => 'wallet-system-for-woocommerce-org-wallet-withdrawal-settings',
-			);
-			$wsfw_default_tabs['wallet-system-for-woocommerce-org-wallet-restriction'] = array(
-				'title'     => esc_html__( 'Wallet Regulation', 'wallet-system-for-woocommerce' ),
-				'name'      => 'wallet-system-for-woocommerce-org-wallet-restriction',
-			);
-			$wsfw_default_tabs['wallet-system-for-woocommerce-org-wallet-promotions'] = array(
-				'title'     => esc_html__( 'Wallet Promotions', 'wallet-system-for-woocommerce' ),
-				'name'      => 'wallet-system-for-woocommerce-org-wallet-promotions',
-			);
-			$wsfw_default_tabs['wallet-system-for-woocommerce-org-wallet-recharge-tab'] = array(
-				'title'     => esc_html__( 'Wallet Quick Recharge', 'wallet-system-for-woocommerce' ),
-				'name'      => 'wallet-system-for-woocommerce-org-wallet-recharge-tab',
-			);
-			$wsfw_default_tabs['wallet-system-for-woocommerce-org-wallet-sms-notification-settings'] = array(
-				'title'     => esc_html__( 'SMS Notification', 'wallet-system-for-woocommerce' ),
-				'name'      => 'wallet-system-for-woocommerce-org-wallet-sms-notification-settings',
-			);
-		}
-
 		$wsfw_default_tabs['wallet-system-for-woocommerce-buy-now-pay-later']      = array(
 			'title' => esc_html__( 'Buy Now Pay Later', 'wallet-system-for-woocommerce' ),
 			'name'  => 'wallet-system-for-woocommerce-buy-now-pay-later',
@@ -1311,8 +1259,6 @@ class Wallet_System_For_Woocommerce {
 					}
 				}
 			}
-			include_once WALLET_SYSTEM_FOR_WOOCOMMERCE_DIR_PATH . 'admin/partials/wallet-system-for-woocommerce-go-pro-data.php';
-
 		}
 	}
 
@@ -1360,6 +1306,8 @@ class Wallet_System_For_Woocommerce {
 				'note'             => $transactiondata['note'],
 				'date'             => gmdate( 'Y-m-d H:i:s' ),
 				'transaction_type_1'   => $transactiondata['transaction_type_1'],
+				'source'               => isset( $transactiondata['source'] ) ? $transactiondata['source'] : $this->wps_wsfw_detect_pos_transaction_source( $transactiondata['order_id'] ),
+				'register_session_id'  => isset( $transactiondata['register_session_id'] ) ? $transactiondata['register_session_id'] : $this->wps_wsfw_detect_pos_register_session_id( $transactiondata['order_id'] ),
 			);
 
 			$results        = $wpdb->insert(
@@ -1374,6 +1322,45 @@ class Wallet_System_For_Woocommerce {
 			}
 
 		endif;
+	}
+
+	/**
+	 * Determines whether a ledger row belongs to a POS order, so callers
+	 * that don't know about POS (e.g. the cashback flow) still get tagged
+	 * correctly without any changes on their part.
+	 *
+	 * @param int|string $order_id WC order id, if any.
+	 * @return string 'pos' or 'online'.
+	 */
+	private function wps_wsfw_detect_pos_transaction_source( $order_id ) {
+		if ( empty( $order_id ) ) {
+			return 'online';
+		}
+
+		$order = wc_get_order( $order_id );
+
+		return ( $order && 'pos' === $order->get_created_via() ) ? 'pos' : 'online';
+	}
+
+	/**
+	 * Reads the POS register session id off a POS order, if any.
+	 *
+	 * @param int|string $order_id WC order id, if any.
+	 * @return int|null
+	 */
+	private function wps_wsfw_detect_pos_register_session_id( $order_id ) {
+		if ( empty( $order_id ) ) {
+			return null;
+		}
+
+		$order = wc_get_order( $order_id );
+		if ( ! $order ) {
+			return null;
+		}
+
+		$session_id = $order->get_meta( '_wsfw_pos_register_session_id', true );
+
+		return '' !== $session_id ? absint( $session_id ) : null;
 	}
 
 	/**
