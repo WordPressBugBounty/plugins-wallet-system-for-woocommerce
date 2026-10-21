@@ -3,10 +3,10 @@ Contributors: wpswings
 Donate link: https://wpswings.com/
 Tags: woocommerce wallet, wordpress wallet, cashback, payments, digital wallet, wallet
 Requires at least: 6.7
-Tested up to: 7.1.2
+Tested up to: 7.1.3
 WC requires at least: 6.5
-WC tested up to:  11.1.2
-Stable tag: 2.8.1
+WC tested up to:  11.2.1
+Stable tag: 2.8.2
 Requires PHP: 7.4
 License: GPLv3 or later 
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -306,8 +306,14 @@ For more detail please visit [**WP Swings Wallet Knowledge base**](https://suppo
 
 == Changelog ==
 
+= 2.8.2 - Released on 21 Oct 2026 =
+* Fix - Quick recharge issue fix
+* Fix - Design issue 
+* New - Add notification popup when any KYC is requested
+* New - Compatibility with latest  WC( 11.2.1 ) and WP( 7.1.3 ) 
+
 = 2.8.1 - Released on 09 Oct 2026 =
-* Fix - Old checkout payment select issue fix
+* Fix – Old checkout payment select issue fix
 
 = 2.8.0 - Released on 01 Oct 2026 =
 * Fix - Vulnerability fix: transaction export (PDF/CSV) now checks the user's permission and a nonce tied to the export action
@@ -644,5 +650,8 @@ For more detail please visit [**WP Swings Wallet Knowledge base**](https://suppo
 
 == Upgrade Notice ==
 
-= 2.8.1 - Released on 09 Oct 2026 =
-* Fix - Old checkout payment select issue fix
+= 2.8.2 - Released on 21 Oct 2026 =
+* Fix - Quick recharge issue fix
+* Fix - Design issue 
+* New - Add notification popup when any KYC is requested
+* New - Compatibility with latest  WC( 11.2.1 ) and WP( 7.1.3 ) 

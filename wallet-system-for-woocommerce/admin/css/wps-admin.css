@@ -1692,7 +1692,9 @@ ul {
 }
 
 .wps-wallet-admin-shell .wps-navbar .wps-navbar__items .wps-link.active {
+  background: #fffaf1;
   border-radius: 999px;
+  box-shadow: inset 0 0 0 1px #f5d48c;
   color: #20143b !important;
   margin: 12px 0 10px;
   padding: 8px 18px;
@@ -1752,8 +1754,14 @@ ul {
   white-space: normal;
 }
 
-.wps-wallet-more-link:hover,
+.wps-wallet-more-link:hover {
+  background: #fffaf1;
+  color: #20143b;
+}
+
 .wps-wallet-more-link.active {
+  background: #fffaf1;
+  box-shadow: inset 0 0 0 1px #f5d48c;
   color: #20143b;
 }
 
@@ -2570,6 +2578,41 @@ ul {
   color: #4b3a64;
   font-size: 13px;
   padding: 14px 12px;
+  vertical-align: middle;
+}
+
+/*
+ * Keep the checkbox and ID cells aligned with the other columns.
+ * Core renders the row checkbox as td.check-column and the primary (ID) column as th[scope=row],
+ * both with vertical-align: top and their own padding.
+ */
+.wps-wallet-admin-shell .wps-wpg-gen-section-table-wrap .wp-list-table tbody .check-column,
+.wps-wallet-admin-shell .wps-wpg-gen-section-table-wrap .wp-list-table tbody .column-primary {
+  border-bottom: 1px solid #f2edf8;
+  color: #4b3a64;
+  font-size: 13px;
+  font-weight: normal;
+  padding: 14px 12px !important;
+  vertical-align: middle !important;
+}
+
+.wps-wallet-admin-shell .wps-wpg-gen-section-table-wrap .wp-list-table thead .check-column,
+.wps-wallet-admin-shell .wps-wpg-gen-section-table-wrap .wp-list-table tfoot .check-column {
+  padding: 14px 12px !important;
+  vertical-align: middle !important;
+}
+
+.wps-wallet-admin-shell .wps-wpg-gen-section-table-wrap .wp-list-table .check-column {
+  width: 20px;
+}
+
+/* Space between the checkbox column and the ID column. */
+.wps-wallet-admin-shell .wps-wpg-gen-section-table-wrap .wp-list-table .column-id {
+  padding-left: 24px !important;
+}
+
+.wps-wallet-admin-shell .wps-wpg-gen-section-table-wrap .wp-list-table .check-column input[type="checkbox"] {
+  margin: 0;
   vertical-align: middle;
 }
 
@@ -3480,6 +3523,24 @@ ul {
   background: var(--wps-wallet-action-soft);
   border-color: var(--wps-wallet-action);
   color: var(--wps-wallet-action);
+}
+
+.wps-wallet-admin-shell .wsfw-secion-kyc-title-link .wsfw-kyc-pending-badge,
+.wsfw-secion-kyc-title-link .wsfw-kyc-pending-badge {
+  align-items: center;
+  background: #d63638;
+  border-radius: 10px;
+  color: #fff;
+  display: inline-flex;
+  font-size: 11px;
+  font-weight: 700;
+  height: 20px;
+  justify-content: center;
+  line-height: 1;
+  margin-left: 8px;
+  min-width: 20px;
+  padding: 0 6px;
+  box-sizing: border-box;
 }
 
 @media screen and (max-width: 600px) {

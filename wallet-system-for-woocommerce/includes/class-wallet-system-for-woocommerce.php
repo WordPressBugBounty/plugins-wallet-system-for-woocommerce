@@ -81,7 +81,7 @@ class Wallet_System_For_Woocommerce {
 			$this->version = WALLET_SYSTEM_FOR_WOOCOMMERCE_VERSION;
 		} else {
 
-			$this->version = '2.8.1';
+			$this->version = '2.8.2';
 		}
 
 		$this->plugin_name = 'wallet-system-for-woocommerce';
@@ -291,11 +291,8 @@ class Wallet_System_For_Woocommerce {
 		$this->loader->add_filter( 'wsfw_wallet_kyc_notification_settings', $wsfw_plugin_admin, 'wsfw_wallet_kyc_notification_settings_tab', 10 );
 		$this->loader->add_action( 'woocommerce_new_order', $wsfw_plugin_admin, 'wps_wsfw_wallet_payment_on_order_create' );
 
-		// Logged-in users.
+		// KYC requests expose users' identity documents; admin-only, never registered for guests.
 		$this->loader->add_action( 'wp_ajax_wps_get_kyc_requests', $wsfw_plugin_admin, 'wps_get_kyc_requests_handler' );
-
-		// Guests (if needed).
-		$this->loader->add_action( 'wp_ajax_nopriv_wps_get_kyc_requests', $wsfw_plugin_admin, 'wps_get_kyc_requests_handler' );
 		$this->loader->add_action( 'wp_ajax_wps_update_kyc_status', $wsfw_plugin_admin, 'wps_update_kyc_status_handler' );
 
 		/*cron for notification*/
